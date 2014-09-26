@@ -3,7 +3,8 @@
 eeros_branch="0.3.x"
 eeduro_branch="develop"
 
-missing_packages=0
+missing_packages=""
+missing_package_count=0
 
 function create_build_dir()
 {
@@ -18,10 +19,11 @@ function create_build_dir()
 
 function check_package()
 {
-	dpkg-query -W $1 >/dev/null
+	dpkg-query -W $1 1>/dev/null 2>/dev/null
 	if [ "$?" != "0" ]; then
-		echo "$1 not installed"
-		((missing_packages++))
+		((missing_package_count++))
+		missing_packages="$1 "
+		echo "missing package: $1"
 	fi
 }
 
@@ -48,8 +50,9 @@ check_package libstdc++6:i386
 check_package libncurses5:i386
 check_package zlib1g:i386
 
-if [ $missing_packages -gt 0 ]; then
+if [ $missing_package_count -gt 0 ]; then
 	echo "install missing packages and run this script again"
+	echo "use: sudo apt-get install $missing_packages"
 	exit 1
 fi
 
