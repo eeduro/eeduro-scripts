@@ -28,6 +28,21 @@ function check_package()
 }
 
 
+check_package git
+check_package make
+check_package cmake
+check_package libc6:i386
+check_package libstdc++6:i386
+check_package libncurses5:i386
+check_package zlib1g:i386
+
+if [ $missing_package_count -gt 0 ]; then
+	echo "install missing packages and run this script again"
+	echo "use: sudo apt-get install $missing_packages"
+	exit 1
+fi
+
+
 if [ ! -d eeros ]; then
 	git clone git://github.com/eeros-project/eeros-framework.git eeros -o upstream -b $eeros_branch
 fi
@@ -43,17 +58,6 @@ if [ ! -d linaro-tc ]; then
 	rm gcc-linaro-arm-linux-gnueabihf-4.7-2013.03-20130313_linux.tar.bz2
 	mv gcc-linaro-arm-linux-gnueabihf-4.7-2013.03-20130313_linux linaro-tc
 	cp toolchain.cmake linaro-tc/
-fi
-
-check_package libc6:i386
-check_package libstdc++6:i386
-check_package libncurses5:i386
-check_package zlib1g:i386
-
-if [ $missing_package_count -gt 0 ]; then
-	echo "install missing packages and run this script again"
-	echo "use: sudo apt-get install $missing_packages"
-	exit 1
 fi
 
 create_build_dir build-x86-64
