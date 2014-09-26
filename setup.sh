@@ -3,6 +3,7 @@
 eeros_branch="0.3.x"
 eeduro_branch="develop"
 
+missing_packages=0
 
 function create_build_dir()
 {
@@ -15,6 +16,14 @@ function create_build_dir()
 	fi
 }
 
+function check_package()
+{
+	dpkg-query -W $1 >/dev/null
+	if [ "$?" != "0" ]; then
+		echo "$1 not installed"
+		((missing_packages++))
+	fi
+}
 
 
 if [ ! -d eeros ]; then
@@ -32,6 +41,16 @@ if [ ! -d linaro-tc ]; then
 	rm gcc-linaro-arm-linux-gnueabihf-4.7-2013.03-20130313_linux.tar.bz2
 	mv gcc-linaro-arm-linux-gnueabihf-4.7-2013.03-20130313_linux linaro-tc
 	cp toolchain.cmake linaro-tc/
+fi
+
+check_package libc6:i386
+check_package libstdc++6:i386
+check_package libncurses5:i386
+check_package zlib1g:i386
+
+if [ $missing_packages -gt 0 ]; then
+	echo "install missing packages and run this script again"
+	exit 1
 fi
 
 create_build_dir build-x86-64
