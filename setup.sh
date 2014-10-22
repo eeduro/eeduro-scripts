@@ -1,7 +1,7 @@
 #!/bin/bash
 
-eeros_branch="0.3.x"
-eeduro_branch="develop"
+eeros_branch="master"
+eeduro_branch="master"
 
 missing_packages=""
 missing_package_count=0
