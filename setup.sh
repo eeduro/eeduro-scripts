@@ -1,9 +1,10 @@
 #!/bin/bash
 
-eeros_branch="master"
-eeduro_branch="master"
+. lib.sh.in
 
-toolchain=""
+setc eeros_branch "master"
+setc eeduro_branch "master"
+setc toolchain ""
 
 missing_packages=""
 missing_package_count=0
