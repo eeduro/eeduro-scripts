@@ -3,6 +3,8 @@
 eeros_branch="master"
 eeduro_branch="master"
 
+toolchain=""
+
 missing_packages=""
 missing_package_count=0
 
@@ -57,17 +59,20 @@ if [ ! -d eeduro ]; then
 	fi
 fi
 
-if [ ! -d linaro-tc ]; then
-	wget -c https://launchpad.net/linaro-toolchain-binaries/trunk/2013.03/+download/gcc-linaro-arm-linux-gnueabihf-4.7-2013.03-20130313_linux.tar.bz2
-	if [ $? -ne 0 ]; then
-		exit 4
+if [ -z $toolchain ]; then
+	toolchain="../linaro-tc/toolchain.cmake"
+	if [ ! -d linaro-tc ]; then
+		wget -c https://launchpad.net/linaro-toolchain-binaries/trunk/2013.03/+download/gcc-linaro-arm-linux-gnueabihf-4.7-2013.03-20130313_linux.tar.bz2
+		if [ $? -ne 0 ]; then
+			exit 4
+		fi
+		echo extracting...
+		tar xjf gcc-linaro-arm-linux-gnueabihf-4.7-2013.03-20130313_linux.tar.bz2
+		rm gcc-linaro-arm-linux-gnueabihf-4.7-2013.03-20130313_linux.tar.bz2
+		mv gcc-linaro-arm-linux-gnueabihf-4.7-2013.03-20130313_linux linaro-tc
+		cp toolchain.cmake linaro-tc/
 	fi
-	echo extracting...
-	tar xjf gcc-linaro-arm-linux-gnueabihf-4.7-2013.03-20130313_linux.tar.bz2
-	rm gcc-linaro-arm-linux-gnueabihf-4.7-2013.03-20130313_linux.tar.bz2
-	mv gcc-linaro-arm-linux-gnueabihf-4.7-2013.03-20130313_linux linaro-tc
-	cp toolchain.cmake linaro-tc/
 fi
 
 create_build_dir build-x86-64
-create_build_dir build-armhf -DCMAKE_TOOLCHAIN_FILE=../linaro-tc/toolchain.cmake
+create_build_dir build-armhf -DCMAKE_TOOLCHAIN_FILE=$toolchain
