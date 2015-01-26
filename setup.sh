@@ -48,7 +48,7 @@ if [ ! -d eeros ]; then
 fi
 
 if [ ! -d eeduro ]; then
-	git clone git://github.com/eeros-project/eeduro-platform.git eeduro -o upstream -b $eeduro_branch
+	git clone git://github.com/eeduro/eeduro-platform.git eeduro -o upstream -b $eeduro_branch
 fi
 
 if [ ! -d linaro-tc ]; then

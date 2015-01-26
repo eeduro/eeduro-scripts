@@ -3,7 +3,7 @@
 Clone this repository:
 
 ```bash
-git clone git://github.com/eeros-project/eeduro-scripts.git eeduro-project
+git clone git://github.com/eeduro/eeduro-scripts.git eeduro-project
 ```
 
 Setup workspace:
