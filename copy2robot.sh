@@ -4,7 +4,7 @@
 
 setc remote_user "root"
 setc remote_host "192.168.7.2"
-setc remote_dir "/opt/eeduro-0.3/"
+setc remote_dir "/opt/eeduro/"
 setc tmpdir "/tmp/eeduro"
 
 rm -rf $tmpdir
