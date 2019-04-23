@@ -1,5 +1,5 @@
 #!/bin/bash
-echo -e "\e[92m+++++++++++++++Starting eeduro-delta application++++++++++++++++$
+echo -e "\e[92m+++++++++++++++Starting eeduro-delta application++++++++++++++++"
 
 mouse="/dev/input/event1"
 
@@ -13,6 +13,6 @@ else
         echo "no mouse connected"
 fi
 
-/usr/bin/sudo /opt/eeros/bin/myApp -c /opt/eeros/bin/HwConfigBBBlue.json
+/usr/bin/sudo /opt/eeros/bin/delta -c /opt/eeros/bin/HwConfigBBBlue.json
 /usr/bin/sudo halt
 
