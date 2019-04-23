@@ -1,0 +1,7 @@
+install-armhf/lib/libeeros.so.1.0.0.30
+install-armhf/lib/libbbblueeeros.so.1.0.0.0
+
+delta/HwConfigBBBlue.json
+build-armhf/delta/delta
+
+bbblue-scripts/delta-sort.conf
