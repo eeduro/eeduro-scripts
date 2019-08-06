@@ -27,7 +27,7 @@ eeros_github_version=55d71a82c0c606ac410dcd54e1b308ee6da190ae		#will be changed 
 eeros_required_version=1.0.0.30
 
 bbb_eeros_github_address=https://github.com/eeros-project/bbblue-eeros.git
-bbb_eeros_github_version=v1.0.0
+bbb_eeros_github_version=v1.1.0
 
 eeduro_delta_address=https://github.com/eeduro/eeduro-delta.git
 
