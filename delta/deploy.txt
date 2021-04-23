@@ -1,6 +1,3 @@
-install-armhf/lib/libeeros.so.1.1.0.0
-install-armhf/lib/libbbblueeeros.so.1.2.0.0
-
 delta/HwConfigBBBlue.json
 build-armhf/delta/delta
 
