@@ -5,42 +5,43 @@ script_dir="$(dirname $script)"
 
 . "$script_dir/config.sh.in"
 
+MAKE="make -j$(nproc)"
 
-mkdir -p $eeros_build_dir
-pushd $eeros_build_dir
-cmake -DCMAKE_TOOLCHAIN_FILE=$toolchain_file \
-      -DCMAKE_INSTALL_PREFIX=$install_dir \
-      -DCMAKE_BUILD_TYPE=Release \
-      $eeros_source_dir
-make
-make install
-popd
-
-
-if [ ! -z ${bbblue_eeros_source_dir+x} ]; then
-  mkdir -p $bbblue_eeros_build_dir
-  pushd $bbblue_eeros_build_dir
-  cmake -DCMAKE_TOOLCHAIN_FILE=$toolchain_file \
-        -DADDITIONAL_INCLUDE_DIRS="$roboticscape_dir/libraries/" \
-        -DADDITIONAL_LINK_DIRS="$roboticscape_dir/libraries/" \
-        -DCMAKE_INSTALL_PREFIX=$install_dir \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DREQUIRED_EEROS_VERSION=$eeros_required_version \
-	$bbblue_eeros_source_dir
-  make
-  make install
-  popd
+if [ "$rm_build_install_dir" = true ]; then
+  rm -rf "$delta_build_dir" "$install_dir"
 fi
 
+# build sourceDir buildDir cmakeFlags
+function build ()
+{
+  local source_dir="$1"
+  local build_dir="$2"
+  shift 2
+  local flags="$@"
 
-mkdir -p $delta_build_dir
-pushd $delta_build_dir
-cmake	-DCMAKE_TOOLCHAIN_FILE=$toolchain_file \
-      -DADDITIONAL_INCLUDE_DIRS="$roboticscape_dir/libraries/" \
-      -DADDITIONAL_LINK_DIRS="$roboticscape_dir/libraries/" \
-      -DCMAKE_INSTALL_PREFIX=$install_dir \
-      -DCMAKE_BUILD_TYPE=Release \
-      -DREQUIRED_EEROS_VERSION=$eeros_required_version \
-	$delta_source_dir
-make
-popd
+echo "aaa: $wd"
+echo "bbb: $source_dir $build_dir"
+
+  mkdir -p "$build_dir"
+  pushd "$build_dir"
+
+  cmake -DCMAKE_INSTALL_PREFIX="$install_dir" \
+        -DCMAKE_BUILD_TYPE=Release \
+        $flags \
+        "$source_dir"
+
+  $MAKE
+  popd
+}
+
+
+#if [ "$use_cross_compilation_environment" = true ]; then
+  unset LD_LIBRARY_PATH
+  . "$environment_setup_script"
+  install_dir="$SDKTARGETSYSROOT/$sdk_install_dir"
+  echo "Due to cross compilation environment, install_dir is set to: $install_dir"
+#fi
+
+
+build "$delta_source_dir" "$delta_build_dir" -DREQUIRED_EEROS_VERSION="$eeros_required_version" 
+
