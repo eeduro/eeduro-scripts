@@ -7,7 +7,7 @@ script_dir="$(dirname $script)"
 
 
 if [ ! -d "$delta_source_dir" ]; then
-	git clone $eeduro_delta_address -o upstream "$delta_source_dir"
+	git clone $delta_git_remote_address -o upstream "$delta_source_dir"
 	pushd $delta_source_dir
 		git checkout $delta_git_version
 	popd

@@ -14,8 +14,8 @@ build_dir="$wd"/build-armhf # build dir
 # The "required_version" variables specify the versions of the libraries
 # which must be used in the delta project.
 
-delta_git_remote_address=https://github.com/eeduro/eeduro-delta.git
-delta_git_version=v0.1.0
+delta_git_remote_address=https://github.com/eeduro/delta.git
+delta_git_version=master
 
 delta_source_dir="$wd/delta"
 delta_build_dir="$build_dir/delta"
