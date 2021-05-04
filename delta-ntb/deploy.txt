@@ -1,5 +1,3 @@
 delta-ntb/HwConfigBBBlue.json
 build-armhf/delta-ntb/delta-ntb
 
-delta-ntb/robotList/delta-sort.0003.conf
-
