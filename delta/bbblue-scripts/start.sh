@@ -13,6 +13,6 @@ else
         echo "no mouse connected"
 fi
 
-/usr/bin/sudo /opt/eeros/bin/delta -c /opt/eeros/bin/HwConfigBBBlue.json
-/usr/bin/sudo halt
+/usr/bin/sudo delta -c HwConfigBBBlue.json
+/usr/bin/sudo /sbin/halt
 

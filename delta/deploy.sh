@@ -44,8 +44,6 @@ do
 	folder=
 	if [[ "$line" == *.so* ]]; then
 		folder="lib"
-	elif [[ "$line" == *.conf ]]; then
-		folder="etc"
 	else
 		folder="bin"
 	fi

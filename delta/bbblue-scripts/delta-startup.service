@@ -1,0 +1,8 @@
+# /etc/systemd/system/delta-startup.service
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/home/ost/bin/start.sh
+
+[Install]
+WantedBy=multi-user.target

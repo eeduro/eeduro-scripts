@@ -11,6 +11,6 @@
 #
 # By default this script does nothing.
 
-sudo screen -dmS delta /opt/eeros/bin/start.sh
+sudo screen -dmS delta start.sh
 
 exit 0
