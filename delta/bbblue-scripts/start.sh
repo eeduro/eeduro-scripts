@@ -13,6 +13,9 @@ else
         echo "no mouse connected"
 fi
 
-/usr/bin/sudo delta -c HwConfigBBBlue.json
+sudo /home/ost/bin/delta -c /home/ost/bin/HwConfigBBBlue.json
+
+sleep 30
+
 /usr/bin/sudo /sbin/halt
 
