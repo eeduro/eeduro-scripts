@@ -8,11 +8,13 @@ sleep 20
 if [ -c "$mouse" ]
 then
         echo "mouse found"
-        sudo screen -dmS mouse cat /dev/input/event1
 else
         echo "no mouse connected"
 fi
 
-/usr/bin/sudo /opt/eeros/bin/delta -c /opt/eeros/bin/HwConfigBBBlue.json
-/usr/bin/sudo halt
+sudo /home/ost/bin/delta-ntb -c /home/ost/bin/HwConfigBBBlue.json
+
+sleep 30
+
+/usr/bin/sudo /sbin/halt
 

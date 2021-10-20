@@ -1,3 +1,2 @@
-delta-ntb/HwConfigBBBlue.json
 build-armhf/delta-ntb/delta-ntb
 

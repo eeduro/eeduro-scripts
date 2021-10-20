@@ -1,0 +1,12 @@
+# /etc/systemd/system/delta-startup.service
+[Unit]
+Description=delta robot application
+
+[Service]
+Type=simple
+ExecStart=/bin/bash -c 'sudo /usr/bin/screen -dmS delta /home/ost/bin/start.sh'
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+
