@@ -8,6 +8,7 @@ sleep 20
 if [ -c "$mouse" ]
 then
         echo "mouse found"
+        sudo screen -dmS mouse cat /dev/input/event1
 else
         echo "no mouse connected"
 fi
