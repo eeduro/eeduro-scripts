@@ -19,9 +19,6 @@ function build ()
   shift 2
   local flags="$@"
 
-echo "aaa: $wd"
-echo "bbb: $source_dir $build_dir"
-
   mkdir -p "$build_dir"
   pushd "$build_dir"
 
