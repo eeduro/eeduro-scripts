@@ -59,7 +59,7 @@ do
 done < "$list"
 
 echo "scp with: $target"
-scp -r $tmp/tmp/* $target
+scp -o HostKeyAlgorithms=+ssh-rsa -o PubkeyAcceptedKeyTypes=+ssh-rsa -r $tmp/tmp/* $target
 if [ $? -eq 0 ]; then
 	cp -r $tmp/tmp/* $tmp
 fi
