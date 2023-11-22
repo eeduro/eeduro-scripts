@@ -20,8 +20,7 @@ delta_git_version=master
 delta_source_dir="$wd/delta"
 delta_build_dir="$build_dir/delta"
 
-eeros_required_version=1.2.0.3
-bbblue_eeros_required_version=1.2.0.0
+eeros_required_version=1.4.0.0
 
 
 
@@ -45,7 +44,7 @@ rm_build_install_dir=false
 # where the libraries and applications (EEROS, sim-eeros, ...) are installed.
 # Typically, the default value ist fine.
 
-environment_setup_script=/opt/ost-distro/1.0/environment-setup-cortexa8hf-neon-poky-linux-gnueabi
+environment_setup_script=/opt/ost-devel/1.0/environment-setup-cortexa8hf-neon-poky-linux-gnueabi
 sdk_install_dir=opt/custom_install
 
 
