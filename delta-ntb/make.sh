@@ -32,13 +32,11 @@ function build ()
 }
 
 
-#if [ "$use_cross_compilation_environment" = true ]; then
-  unset LD_LIBRARY_PATH
-  . "$environment_setup_script"
-  install_dir="$SDKTARGETSYSROOT/$sdk_install_dir"
-  echo "Due to cross compilation environment, install_dir is set to: $install_dir"
-#fi
+unset LD_LIBRARY_PATH
+. "$environment_setup_script"
+install_dir="$SDKTARGETSYSROOT/$sdk_install_dir"
+echo "Due to cross compilation environment, install_dir is set to: $install_dir"
 
 
-build "$delta_source_dir" "$delta_build_dir" -DREQUIRED_EEROS_VERSION="$eeros_required_version" 
+build "$delta_source_dir" "$delta_build_dir"
 

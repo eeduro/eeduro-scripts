@@ -20,9 +20,6 @@ delta_git_version=master
 delta_source_dir="$wd/delta"
 delta_build_dir="$build_dir/delta"
 
-eeros_required_version=1.4.0.0
-
-
 
 # variables for make.sh script
 #------------------------------------------------------------------------------

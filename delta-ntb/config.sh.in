@@ -20,9 +20,6 @@ delta_git_version=ntb-version
 delta_source_dir="$wd/delta-ntb"
 delta_build_dir="$build_dir/delta-ntb"
 
-eeros_required_version=1.4.0.0
-
-
 
 # variables for make.sh script
 #------------------------------------------------------------------------------
@@ -44,7 +41,7 @@ rm_build_install_dir=false
 # where the libraries and applications (EEROS, sim-eeros, ...) are installed.
 # Typically, the default value ist fine.
 
-environment_setup_script=/home/ost/sdk/ost-devel/1.0/bbblue/environment-setup-cortexa8hf-neon-poky-linux-gnueabi
+environment_setup_script=/opt/ost-devel/1.0/environment-setup-cortexa8hf-neon-poky-linux-gnueabi
 sdk_install_dir=opt/custom_install
 
 
